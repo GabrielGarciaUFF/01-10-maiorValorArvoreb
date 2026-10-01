@@ -190,8 +190,19 @@ void particiona(TNo *P, int d, int pos, int chave, TNo *pt) {
 }
 
 int maior(TNo *raiz) {
-    //TODO: Implementar essa funcao
-    return -1;
+    if (raiz == NULL) {
+        return -1;
+    }
+
+    imprime_no(raiz);
+
+    // Se for nó folha (o ponteiro mais à direita é NULL), a maior chave é a última do nó
+    if (raiz->p[raiz->m] == NULL) {
+        return raiz->s[raiz->m - 1];
+    }
+
+    // Caso contrário, a maior chave estará na subárvore mais à direita
+    return maior(raiz->p[raiz->m]);
 }
 
 int main(int argc, char *argv[]) {
